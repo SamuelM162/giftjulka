@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Surprise ❤️</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .wrap {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: black;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: black;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      background: rgba(0,0,0,0.35);
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="overlay">For you ❤️</div>
+    <video id="surpriseVideo" autoplay playsinline controls>
+      <source src="video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <script>
+    const video = document.getElementById("surpriseVideo");
+
+    const tryPlay = async () => {
+      try {
+        await video.play();
+      } catch (e) {
+        console.log("Autoplay blocked:", e);
+      }
+    };
+
+    tryPlay();
+
+    document.addEventListener("click", tryPlay, { once: true });
+    document.addEventListener("keydown", tryPlay, { once: true });
+    document.addEventListener("touchstart", tryPlay, { once: true });
+  </script>
+</body>
+</html>
